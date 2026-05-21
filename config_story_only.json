@@ -1,0 +1,108 @@
+{
+  "design_resolution": [1920, 1080],
+  "dry_run_default": true,
+  "default_max_runs": 50,
+  "screenshot": {
+    "retries": 3,
+    "retry_delay_seconds": 1.0,
+    "screencapture_timeout_seconds": 20
+  },
+  "notifications": {
+    "enabled": true,
+    "desktop": true,
+    "sound": true,
+    "sound_file": "/System/Library/Sounds/Glass.aiff"
+  },
+  "app": {
+    "activate_before_run": false,
+    "name": "抖店工作台",
+    "settle_seconds": 1.0
+  },
+  "pre_run_manual_switch_seconds": 3,
+  "ocr": {
+    "primary": "paddle",
+    "fallbacks": ["vision"],
+    "paddle": {
+      "lang": "ch",
+      "use_angle_cls": true,
+      "det_limit_side_len": 1600
+    }
+  },
+  "allow_coordinate_fallback": true,
+  "click_backend": "pyautogui",
+  "move_duration_seconds": 0.15,
+  "after_click_delay_seconds": 0.8,
+  "timeouts": {
+    "modal_seconds": 12,
+    "type_area_seconds": 45,
+    "result_seconds": 25,
+    "quota_seconds": 8
+  },
+  "waits": {
+    "after_select_product_confirm_seconds": 2.0,
+    "after_video_type_select_seconds": 10.0,
+    "after_generate_click_seconds": 4.0,
+    "between_runs_seconds": 2.0
+  },
+  "regions": {
+    "left_panel": [225, 300, 390, 760],
+    "product_modal": [1260, 120, 640, 950],
+    "result_panel": [625, 300, 1280, 760],
+    "quota": [245, 965, 360, 45]
+  },
+  "readiness": {
+    "after_video_type_texts": ["选择图片素材", "立即生成", "今天还可"],
+    "generate_button_enabled_check": true,
+    "generate_button_region": [248, 1005, 340, 42],
+    "enabled_blue_min": 130,
+    "enabled_red_max": 120,
+    "material_ready_timeout_seconds": 90,
+    "loading_texts": ["正在检测", "优化图片", "适合创作"]
+  },
+  "targets": {
+    "select_product_button": {
+      "texts": ["选择商品", "+ 选择商品"],
+      "fallback_point": [420, 405],
+      "region": "left_panel"
+    },
+    "modal_product_checkbox": {
+      "texts": ["杜邦"],
+      "fallback_point": [1400, 414],
+      "region": "product_modal",
+      "allow_coordinate_fallback": false,
+      "fallback_to_remembered_success": true,
+      "fallback_to_first_product": true,
+      "first_product_point": [1425, 414]
+    },
+    "modal_confirm_button": {
+      "texts": ["确认"],
+      "fallback_point": [1776, 1048],
+      "region": "product_modal"
+    },
+    "first_video_type_card": {
+      "texts": ["活动", "童装潮源", "故事成片", "穿搭展示", "单品展示"],
+      "fallback_point": [418, 552],
+      "region": "left_panel"
+    },
+    "generate_button": {
+      "texts": ["立即生成"],
+      "fallback_point": [418, 1025],
+      "region": "left_panel"
+    }
+  },
+  "video_type_cycle": [
+    {
+      "name": "故事成片",
+      "texts": ["故事成片"],
+      "fallback_point": [380, 510],
+      "region": "left_panel"
+    }
+  ],
+  "quota_patterns": [
+    "今天还可免费提现生成(\\d+)条视频",
+    "今天还可.*?生成(\\d+)条视频",
+    "还可.*?(\\d+)条视频"
+  ],
+  "result_success_texts": ["视频生成中", "预计需要", "生成结果"],
+  "on_quota_read_fail": "estimate_after_success"
+}

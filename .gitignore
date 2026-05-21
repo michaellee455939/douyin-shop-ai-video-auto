@@ -1,0 +1,11 @@
+__pycache__/
+*.py[cod]
+.DS_Store
+
+.run_ai_video_loop.lock
+runtime_state.json
+
+logs/
+screenshots/
+
+*.bak_*
